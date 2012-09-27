@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>{Title}{block:SearchPage}, {lang:Search results for SearchQuery}{/block:SearchPage}{block:PostSummary}, {PostSummary}{/block:PostSummary}</title>
+    <meta charset="utf-8">
+    <!-- Facebook Meta-->
+    <meta property="fb:app_id" content="226794564113995" />
+    <meta property="og:type" content="blog" />
+    <meta property="og:image" content="{PortraitURL-128}" />
+    {block:IndexPage}
+    <meta property="og:url" content="http://blog.huijun.org/" />
+    <meta property="og:title" content="{Title}" />
+    <meta property="og:description" content="利用30天，完成iOS開發入門，大家一起來寫App吧！" />
+    {/block:IndexPage}
+    {block:PostSummary}
+    <meta property="og:title" content="{PostSummary} - {Title}" />
+    <meta property="og:url" content="{Permalink}" />
+    <meta property="og:description" content="{MetaDescription}" />
+    {/block:PostSummary}
+    {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
+    <!-- disable iPhone inital scale -->
+    <meta name="viewport" content="width=device-width; initial-scale=1.0">
+    <link rel="shortcut icon" href="{Favicon}" />
+    <link rel="apple-touch-icon" href="{PortraitURL-128}"/>
+    <link rel="alternate" type="application/rss+xml" href="{RSS}" />
+    <link type="text/css" rel="stylesheet" href="http://huijun.org/tumblr/shCoreDefault.css"/>
+    <style>
+.avatar{
+    margin:10px auto 0;
+    width: 146px;
+    height: 146px;
+    padding: 8px 0 0 9px;
+    background: url('http://assets.tumblr.com/themes/redux/avatar-bg.png') top left no-repeat;
+}
+.widget{
+    font-size: 16px;
+    line-height: 1.5;
+}
+.ask_and_submit{
+    margin:10px 0 0;
+}
+.ask_and_submit .item{
+    float: left;
+    background-color: #444;
+    color: #fff;
+    padding: 4px 8px;
+    margin: 0 5px 5px 0;
+    border-radius: 6px;
+}
+#followontumblr{
+    display: block;
+    margin:10px 0 10px;
+}
+#followontumblr div{
+    background: url('http://assets.tumblr.com/themes/redux/sidebar-follow-on-en_US.png') center left no-repeat #444;
+    text-indent: -9999px;
+    border-radius: 6px;
+    padding:5px;
+    
+    {block:German}
+        background-image: url('http://assets.tumblr.com/themes/redux/sidebar-follow-on-de_DE.png');
+    {/block:German}
+    
+    {block:Japanese}
+        background-image: url('http://assets.tumblr.com/themes/redux/sidebar-follow-on-ja_JP.png');
+    {/block:Japanese}
+    
+    {block:Italian}
+        background-image: url('http://assets.tumblr.com/themes/redux/sidebar-follow-on-it_IT.png');
+    {/block:Italian}
+    
+    {block:French}
+        background-image: url('http://assets.tumblr.com/themes/redux/sidebar-follow-on-fr_FR.png');
+    {/block:French}
+}
+/************************************************************************************
+RESET
+*************************************************************************************/
+html, body, address, blockquote, div, dl, form, h1, h2, h3, h4, h5, h6, ol, p, pre, table, ul,
+dd, dt, li, tbody, td, tfoot, th, thead, tr, button, del, ins, map, object,
+a, abbr, acronym, b, bdo, big, br, cite, code, dfn, em, i, img, kbd, q, samp, small, span,
+strong, sub, sup, tt, var, legend, fieldset {
+    margin: 0;
+    padding: 0;
+}
+
+img, fieldset {
+    border: 0;
+}
+
+/* set image max width to 100% */
+img {
+    max-width: 100%;
+    height: auto;
+    width: auto\9; /* ie8 */
+}
+
+/* set html5 elements to block */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { 
+    display: block;
+}
+
+/************************************************************************************
+GENERAL STYLING
+*************************************************************************************/
+body {
+    background: #0d1424 url(http://huijun.org/tumblr/images/body-bg.jpg) no-repeat center top;
+    font: .81em/150% Arial, Helvetica, sans-serif;
+    color: #666;
+}
+a {
+    color: #026acb;
+    text-decoration: none;
+    outline: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+p {
+    margin: 0 0 1.2em;
+    padding: 0;
+}
+
+/* list */
+ul, ol {
+    margin: 1em 0 1.4em 24px;
+    padding: 0;
+    line-height: 140%;
+}
+li {
+    margin: 0 0 .5em 0;
+    padding: 0;
+}
+
+/* headings */
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.4em;
+    margin: 20px 0 .4em;
+    color: #000;
+}
+h1 {
+    font-size: 2em;
+}
+h2 {
+    font-size: 1.6em;
+}
+h3 {
+    font-size: 1.4em;
+}
+h4 {
+    font-size: 1.2em;
+}
+h5 {
+    font-size: 1.1em;
+}
+h6 {
+    font-size: 1em;
+}
+
+/* reset webkit search input styles */
+input[type=search] {
+    -webkit-appearance: none;
+    outline: none;
+}
+input[type="search"]::-webkit-search-decoration, 
+input[type="search"]::-webkit-search-cancel-button {
+    display: none;
+}
+/************************************************************************************
+HEADER
+*************************************************************************************/
+#header {
+    position: relative;
+}
+
+/* site logo */
+#logo {
+    position: absolute;
+    top: 10px;
+}
+#logo a {
+    font: bold 36px/100% Arial, Helvetica, sans-serif;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* site description */
+#description {
+    font: italic 100%/130% "Times New Roman", Times, serif;
+    color: #fff;
+    position: absolute;
+    top: 55px;
+}
+
+/* searchform */
+#searchform {
+    position: absolute;
+    right: 10px;
+    bottom: 6px;
+    z-index: 100;
+    width: 160px;
+}
+#searchform #s {
+    width: 140px;
+    float: right;
+    background: #fff;
+    border: none;
+    padding: 6px 10px;
+    /* border radius */
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    /* box shadow */
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.2);
+    -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.2);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.2);
+    /* transition */
+    -webkit-transition: width .7s;
+    -moz-transition: width .7s;
+    transition: width .7s;
+}
+
+/************************************************************************************
+MAIN NAVIGATION
+*************************************************************************************/
+#navigation {
+    width: 100%;
+    background: #ccc;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+    /* gradient */
+    background: #6a6a6a url(http://huijun.org/tumblr/images/nav-bar-bg.png) repeat-x;
+    background: -webkit-gradient(linear, left top, left bottom, from(#b9b9b9), to(#6a6a6a));
+    background: -moz-linear-gradient(top,  #b9b9b9,  #6a6a6a);
+    background: linear-gradient(-90deg, #b9b9b9, #6a6a6a);
+    /* rounded corner */
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    /* box shadow */
+    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 1px 1px rgba(0,0,0,.4);
+    -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 1px 1px rgba(0,0,0,.4);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 1px 1px rgba(0,0,0,.4);
+}
+#navigation li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    float: left;
+    position: relative;
+}
+#navigation li:first-child {
+    margin-left: 10px;
+}
+#navigation a {
+    line-height: 100%;
+    font-weight: bold;
+    color: #fff;
+    display: block;
+    padding: 14px 15px;
+    text-decoration: none;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+}
+#navigation a:hover {
+    color: #fff;
+    background: #474747;
+    /* gradient */
+    background: -webkit-gradient(linear, left top, left bottom, from(#282828), to(#4f4f4f));
+    background: -moz-linear-gradient(top,  #282828,  #4f4f4f);
+    background: linear-gradient(-90deg, #282828, #4f4f4f);
+}
+
+/************************************************************************************
+CONTENT
+*************************************************************************************/
+#content {
+    margin:30px 0 0 0;
+    width: 670px;
+    float: left;
+}
+article{
+    padding: 20px 35px;
+    background: #fff;
+    /* rounded corner */
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    /* box shadow */
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.4);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,.4);
+    box-shadow: 0 1px 3px rgba(0,0,0,.4);
+}
+
+/* post */
+.post {
+    margin-bottom: 40px;
+    font-size: 16px;
+    font-family: {font:Body};
+    line-height:1.5;
+}
+.post header{margin:15px 0;}
+.post .like{float:right;}
+.post-title {
+    float:left;
+    margin: 0 0 5px;
+    padding: 0;
+    font: bold 26px/120% Arial, Helvetica, sans-serif;
+}
+
+.post-title a {
+    text-decoration: none;
+    color: #000;
+}
+.post-meta {
+    margin: 0 0 10px;
+    font-size: 90%;
+}
+
+/* post image */
+.post-image {
+    margin: 0 0 15px;
+}
+
+/************************************************************************************
+SIDEBAR
+*************************************************************************************/
+#sidebar {
+    width: 280px;
+    float: right;
+    margin: 30px 0 30px;
+}
+.widget {
+    background: #fff;
+    margin: 0 0 30px;
+    padding: 10px 20px;
+    /* rounded corner */
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    /* box shadow */
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.4);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,.4);
+    box-shadow: 0 1px 3px rgba(0,0,0,.4);
+}
+.widgettitle {
+    margin: 0 0 5px;
+    padding: 0; 
+}
+.widget ul {
+    margin: 0;
+    padding: 0;
+}
+.widget li {
+    margin: 0;
+    padding: 6px 0;
+    list-style: none;
+    clear: both;
+    border-top: solid 1px #eee;
+}
+
+/* flickr widget */
+.widget .flickr_badge_image {
+    margin-top: 10px;
+}
+.widget .flickr_badge_image img {
+    width: 48px;
+    height: 48px;
+    margin-right: 12px;
+    margin-bottom: 12px;
+    float: left;
+}
+
+/************************************************************************************
+FOOTER
+*************************************************************************************/
+#footer {
+    clear: both;
+    color: #ccc;
+    font-size: 85%;
+}
+#footer a {
+    color: #fff;
+}
+
+/************************************************************************************
+CLEARFIX
+*************************************************************************************/
+.clearfix:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+.clearfix { display: inline-block; }
+.clearfix { display: block; zoom: 1; }
+
+
+
+
+        /* Layout Structure */
+        #container {
+            width: 980px;
+            margin: 0 auto;
+        }
+        #header {
+            height: 160px;
+        }
+        #content {
+            width: 670px;
+            float: left;
+        }
+        #sidebar {
+            width: 280px;
+            float: right;
+        }
+        #footer {
+            clear: both;
+        }
+        /* Desktop */
+        @media (max-width: 980px) {
+            #container {
+                width: 95%;
+            }
+            #content {
+                width: 66%;
+            }
+            article{
+                padding: 3% 4%;
+            }
+            #sidebar {
+                width: 30%;
+            }
+            #sidebar .widget {
+                padding: 8% 7%;
+                margin-bottom: 10px;
+            }
+        }
+        /* Tablet */
+        @media (max-width: 767px) {
+            #header {
+                height: auto;
+            }
+            #searchform {
+                position: absolute;
+                top: 5px;
+                right: 0;
+            }
+            #searchform #s {
+                width: 70px;
+            }
+            #searchform #s:focus {
+                width: 150px;
+            }
+            #navigation {
+                position: static;
+            }
+            #logo {
+                margin: 15px 100px 5px 0;
+                position: static;
+            }
+            #description {
+                margin: 0 0 15px;
+                position: static;
+            }
+            #content {
+                width: auto;
+                float: none;
+                margin: 20px 0;
+            }
+            #sidebar {
+                width: 100%;
+                float: none;
+                margin: 0;
+            }
+            #sidebar .widget {
+                padding: 3% 4%;
+                margin: 0 0 40px;
+            }
+            .avatar{float: left;}
+        }
+        /* Landscape phones */
+        @media (max-width: 480px) {
+            html {
+                -webkit-text-size-adjust: none;
+            }
+            #navigation a {
+                font-size: 90%;
+                padding: 10px 8px;
+            }
+        }
+    </style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-399890-1']);
+  _gaq.push(['_setDomainName', 'huijun.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+<body onload="setTimeout(scrollTo, 0, 0, 1)">
+
+<div id="container">
+    <header id="header">
+        <hgroup>
+            <h1 id="logo">
+                <a href="/">
+                    {Title}
+                </a>
+            </h1>
+            <h2 id="description">利用30天，完成iOS開發入門，大家一起來寫App吧！</h2>
+        </hgroup>
+        <nav>
+            <ul id="navigation" class="clearfix">
+                <li><a href="http://blog.huijun.org/">{Title}</a></li>
+                <li><a href="http://www.huijun.org/cat/?id=4">蘭小子攝影集</a></li>
+            </ul>
+        </nav>
+        <form id="searchform">
+            <input type="search" placeholder="Search" id="s">
+        </form>
+    </header>
+    <div id="content">
+        {block:Posts}
+        <article class="post">
+            {block:Text}
+            {block:Title}
+            <header class="clearfix">
+                <h1 class="post-title"><a href="{Permalink}">{Title}</a></h1>
+                <div class="like">
+                    <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="box_count" data-width="55" data-show-faces="true" data-action="recommend" data-font="lucida grande"></div>
+                </div>
+            </header>
+            {/block:Title}
+            <div class="content">{Body}</div>
+            <footer>
+                <div class="fbpush">
+                <div class="fb-like" data-href="{Permalink}" data-send="false" data-width="350" data-show-faces="true" data-font="lucida grande"></div>
+                {block:PostSummary}
+                <div class="fb-comments" data-href="{Permalink}" data-num-posts="2" data-width="350"></div>
+                {/block:PostSummary}
+                </div>
+            </footer>
+            {/block:Text}
+        </article>
+        {/block:Posts}
+    </div>
+    <aside id="sidebar">
+        <section class="widget">
+            <h4 class="widgettitle">目錄</h4>
+            <ul>
+                <li><a href="http://blog.huijun.org/post/32194509906">第0天: 前言</a></li>
+            </ul>
+        </section>
+        <section class="widget">
+            <div class="avatar"><a href="/"><img src="{PortraitURL-128}" /></a></div>
+            <div class="description">{Description}</div>
+            <div class="ask_and_submit clearfix">
+                {block:AskEnabled}<a href="/ask" class="item">{AskLabel}</a>{/block:AskEnabled}
+                {block:SubmissionsEnabled}<a href="/submit" class="item">{SubmitLabel}</a>{/block:SubmissionsEnabled}
+                <a href="{RSS}" class="item">{lang:RSS}</a>
+            </div>
+            <a href="http://www.tumblr.com/follow/{Name}" id="followontumblr"><div class="heading">{lang:Follow on Tumblr}</div></a>
+        </section>
+    </aside>
+    <footer id="footer">
+        
+    </foooter>
+</div>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1&appId=226794564113995";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <script src="http://huijun.org/tumblr/shCore.js"></script>
+    <script src="http://huijun.org/tumblr/shBrushObjC.js"></script>
+    <script src="http://huijun.org/tumblr/shBrushJScript.js"></script>
+    <script src="http://huijun.org/tumblr/shBrushCss.js"></script>
+    <script src="http://huijun.org/tumblr/shBrushPhp.js"></script>
+    <script src="http://huijun.org/tumblr/shBrushXml.js"></script>
+    <script>
+        SyntaxHighlighter.all();
+    </script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>HTML 5 Responsive Design</title>
+	<meta charset="utf-8">
+	<!-- disable iPhone inital scale -->
+	<meta name="viewport" content="width=device-width; initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<style>
+		/* Layout Structure */
+		#container {
+			width: 980px;
+			margin: 0 auto;
+		}
+		#header {
+			height: 160px;
+		}
+		#content {
+			width: 600px;
+			float: left;
+		}
+		#sidebar {
+			width: 280px;
+			float: right;
+		}
+		#footer {
+			clear: both;
+		}
+		/* Desktop */
+		@media (max-width: 980px) {
+			#container {
+				width: 95%;
+			}
+			#content {
+				width: 60%;
+				padding: 3% 4%;
+			}
+			#sidebar {
+				width: 30%;
+			}
+			#sidebar .widget {
+				padding: 8% 7%;
+				margin-bottom: 10px;
+			}
+		}
+		/* Tablet */
+		@media (max-width: 767px) {
+			#header {
+				height: auto;
+			}
+			#searchform {
+				position: absolute;
+				top: 5px;
+				right: 0;
+			}
+			#searchform #s {
+				width: 70px;
+			}
+			#searchform #s:focus {
+				width: 150px;
+			}
+			#navigation {
+				position: static;
+			}
+			#logo {
+				margin: 15px 100px 5px 0;
+				position: static;
+			}
+			#description {
+				margin: 0 0 15px;
+				position: static;
+			}
+			#content {
+				width: auto;
+				float: none;
+				margin: 20px 0;
+			}
+			#sidebar {
+				width: 100%;
+				float: none;
+				margin: 0;
+			}
+			#sidebar .widget {
+				padding: 3% 4%;
+				margin: 0 0 10px;
+			}
+		}
+		/* Landscape phones */
+		@media (max-width: 480px) {
+			html {
+				-webkit-text-size-adjust: none;
+			}
+			#navigation a {
+				font-size: 90%;
+				padding: 10px 8px;
+			}
+		}
+	</style>
+</head>
+<body onload="setTimeout(scrollTo, 0, 0, 1)">
+
+<div id="container">
+	<header id="header">
+		<hgroup>
+			<h1 id="logo"><a href="#">title</a></h1>
+			<h2 id="description">description</h2>
+		</hgroup>
+		<nav>
+			<ul id="navigation" class="clearfix">
+				<li><a href="#">home</a></li>
+			</ul>
+		</nav>
+		<form id="searchform">
+			<input type="search" placeholder="Search" id="s">
+		</form>
+	</header>
+	<div id="content">
+		<article class="post">
+			<header>
+				<h1 class="post-title"><a href="#">article title</a></h1>
+			</header>
+			<p class="post-meta"><time pubdate="" datetime="2011-05-08" class="post-date">May 8, 2011</time> <em>in</em> <a href="#">Category</a></p>
+			<p>content</p>
+			<footer>post time</footer>
+		</article>
+		<article class="post">
+			<header>
+				<h1 class="post-title"><a href="#">article title</a></h1>
+			</header>
+			<p class="post-meta"><time pubdate="" datetime="2011-05-08" class="post-date">May 8, 2011</time> <em>in</em> <a href="#">Category</a></p>
+			<p>content</p>
+			<footer>post time</footer>
+		</article>
+	</div>
+	<aside id="sidebar">
+		<section class="widget">
+			<h4 class="widgettitle">Sidebar</h4>
+			<ul>
+				<li><a href="#">Category</a></li>
+				<li><a href="#">Category</a></li>
+				<li><a href="#">Category</a></li>
+			</ul>
+		</widget>
+	</aside>
+	<footer id="footer">
+		footer
+	</foooter>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
