@@ -1,3 +1,6 @@
+// jQuery design pattern
+// http://addyosmani.com/resources/essentialjsdesignpatterns/book/
+
 (function($) {
 	$.fn.PlugInName = function(opts) {
 		// default configuration

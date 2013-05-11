@@ -4,11 +4,11 @@
     <title>{Title}{block:SearchPage}, {lang:Search results for SearchQuery}{/block:SearchPage}{block:PostSummary}, {PostSummary}{/block:PostSummary}</title>
     <meta charset="utf-8">
     <!-- Facebook Meta-->
-    <meta property="fb:app_id" content="226794564113995" />
+    <meta property="fb:app_id" content="556674154382711" />
     <meta property="og:type" content="blog" />
     <meta property="og:image" content="{PortraitURL-128}" />
     {block:IndexPage}
-    <meta property="og:url" content="http://blog.huijun.org/" />
+    <meta property="og:url" content="http://www.evernoteapi.com/" />
     <meta property="og:title" content="{Title}" />
     <meta property="og:description" content="{Description}" />
     {/block:IndexPage}
@@ -23,7 +23,6 @@
     <link rel="shortcut icon" href="{Favicon}" />
     <link rel="apple-touch-icon" href="{PortraitURL-128}"/>
     <link rel="alternate" type="application/rss+xml" href="{RSS}" />
-    <link type="text/css" rel="stylesheet" href="http://huijun.org/tumblr/shCoreDefault.css"/>
     <link type="text/css" rel="stylesheet" href="http://huijun.org/tumblr/style.css?v=1"/>
 </head>
 <body onload="setTimeout(scrollTo, 0, 0, 1)">
@@ -36,13 +35,11 @@
                     {Title}
                 </a>
             </h1>
-            <h2 id="description">一起讀好書，做好事！</h2>
+            <h2 id="description">Make your apps memorable</h2>
         </hgroup>
         <nav>
             <ul id="navigation" class="clearfix">
-                <li><a href="http://book.huijun.org/">好書推薦</a></li>
-                <li><a href="http://blog.huijun.org/">iOS 學習筆記</a></li>
-                <li><a href="http://www.huijun.org/cat/?id=4">蘭小子攝影集</a></li>
+                <li><a href="http://www.evernoteapi.com/tagged/php">PHP</a></li>
             </ul>
         </nav>
         <form id="searchform">
@@ -104,30 +101,22 @@
     </foooter>
 </div>
 <div id="fb-root"></div>
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-399890-1']);
-  _gaq.push(['_setDomainName', 'huijun.org']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-40539151-1', 'evernoteapi.com');
+  ga('send', 'pageview');
 </script>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1&appId=226794564113995";
+  js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1&appId=556674154382711";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-    <script src="http://huijun.org/tumblr/shCore.js"></script>
-    <script src="http://huijun.org/tumblr/shBrushObjC.js"></script>
-    <script src="http://huijun.org/tumblr/shBrushJScript.js"></script>
-    <script src="http://huijun.org/tumblr/shBrushCss.js"></script>
-    <script src="http://huijun.org/tumblr/shBrushPhp.js"></script>
-    <script src="http://huijun.org/tumblr/shBrushXml.js"></script>
     <script>
         SyntaxHighlighter.all();
     </script>

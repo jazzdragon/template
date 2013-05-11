@@ -1,3 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>{Title}{block:SearchPage}, {lang:Search results for SearchQuery}{/block:SearchPage}{block:PostSummary}, {PostSummary}{/block:PostSummary}</title>
+    <meta charset="utf-8">
+    <!-- Facebook Meta-->
+    <meta property="fb:app_id" content="556674154382711" />
+    <meta property="og:type" content="blog" />
+    <meta property="og:image" content="{PortraitURL-128}" />
+    {block:IndexPage}
+    <meta property="og:url" content="http://www.evernoteapi.com/" />
+    <meta property="og:title" content="{Title}" />
+    <meta property="og:description" content="{Description}" />
+    {/block:IndexPage}
+    {block:PostSummary}
+    <meta property="og:title" content="{PostSummary} - {Title}" />
+    <meta property="og:url" content="{Permalink}" />
+    <meta property="og:description" content="{MetaDescription}" />
+    {/block:PostSummary}
+    {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
+    <!-- disable iPhone inital scale -->
+    <meta name="viewport" content="width=device-width; initial-scale=1.0">
+    <link rel="shortcut icon" href="{Favicon}" />
+    <link rel="apple-touch-icon" href="{PortraitURL-128}"/>
+    <link rel="alternate" type="application/rss+xml" href="{RSS}" />
+    <!--<link type="text/css" rel="stylesheet" href="http://huijun.org/tumblr/style.css?v=1"/>-->
+<style>
 .avatar{
     margin:10px auto 0;
     width: 146px;
@@ -430,7 +457,7 @@ CLEARFIX
         padding: 3% 4%;
         margin: 0 0 40px;
     }
-    .avatar{float: left;}
+    .widget .avatar{float: left;}
 }
 /* Landscape phones */
 @media (max-width: 480px) {
@@ -450,21 +477,22 @@ CLEARFIX
     border-left: none;
     border-right: none;
     padding: 5px 0;
-    margin: 15px 0;
+    margin: 0 0 15px 0;
     font-size: 12px;
 }
 .date{
     padding: 5px 0;
     border-top: 1px solid #ddd;
     font-size: 12px;
+    margin: 30px 0 0 0;
 }
 .date .time{
     float: left;
-    width: 500px;
 }
 .date .count{
     float: right;
     width: 100px;
+    text-align: right;
 }
 .notecontainer{
     background: #eaeaea;
@@ -474,8 +502,7 @@ CLEARFIX
     font-family: {font:Accent};
     font-size: 11px;
     color: #666;
-    margin-top: 10px;
-    margin-bottom: -10px;
+    margin-bottom: 10px;
 }
 .notecontainer a {
     color: #666;
@@ -484,12 +511,14 @@ CLEARFIX
 
 .notecontainer ol.notes {
     padding: 0px 0 10px 0;
+    margin: 0;
     list-style-type: none;
     font-size: 11px;
 }
 
     .notecontainer ol.notes li.note {
-        padding: 10px 10px 0 10px;
+        padding: 0 0 0 10px;
+        margin: 0;
     }
     
         .notecontainer ol.notes li.note img.avatar {
@@ -519,3 +548,134 @@ CLEARFIX
 .content p{
     margin: 0;
 }
+</style>
+</head>
+<body onload="setTimeout(scrollTo, 0, 0, 1)">
+
+<div id="container">
+    <header id="header">
+        <hgroup>
+            <h1 id="logo">
+                <a href="/">
+                    {Title}
+                </a>
+            </h1>
+            <h2 id="description">Make your apps memorable</h2>
+        </hgroup>
+        <nav>
+            <ul id="navigation" class="clearfix">
+                <li><a href="http://www.evernoteapi.com/tagged/devcup">Devcup</a></li>
+                <li><a href="http://www.evernoteapi.com/tagged/iOS">iOS</a></li>
+                <li><a href="http://www.evernoteapi.com/tagged/android">Android</a></li>
+                <li><a href="http://www.evernoteapi.com/tagged/php">PHP</a></li>
+                <li><a href="http://www.evernoteapi.com/tagged/nodejs">Node.js</a></li>
+            </ul>
+        </nav>
+        <form id="searchform">
+            <input type="search" placeholder="Search" id="s">
+        </form>
+    </header>
+    <div id="content">
+        {block:Posts}
+        <article class="post">
+            {block:Text}
+                {block:Title}
+                <header class="clearfix">
+                    <h1 class="post-title"><a href="{Permalink}">{Title}</a></h1>
+                    <div class="like">
+                        <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="box_count" data-width="55" data-show-faces="true" data-action="recommend" data-font="lucida grande"></div>
+                    </div>
+                </header>
+                {/block:Title}
+                <div class="content">{Body}</div>
+            {/block:Text}
+            {block:Link}
+                <header class="clearfix">
+                    <h1 class="post-title"><a href="{Permalink}" {Target}>{Name}</a></h1>
+                    <div class="like">
+                        <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="box_count" data-width="55" data-show-faces="true" data-action="recommend" data-font="lucida grande"></div>
+                    </div>
+                </header>
+                {block:Description}<div class="content">{Description}</div>{/block:Description}
+            {/block:Link}
+            <footer>
+                {block:Date}
+                <div class="date">
+                    <a href="{Permalink}">
+                        <div class="clearfix">
+                            <div class="time">
+                            {block:Reblog}
+                                {lang:Reblogged TimeAgo from ReblogParentName} {block:RebloggedFromReblog}(<span style="text-transform:lowercase;">{lang:Originally from ReblogRootName}</span>){/block:RebloggedFromReblog}
+                            {/block:Reblog}
+                            
+                            {block:NotReblog}
+                                {lang:Posted TimeAgo from source}
+                            {/block:NotReblog}
+                            </div>
+                            <div class="count">{block:NoteCount}{NoteCountWithLabel}{/block:NoteCount} {block:IfDisqusShortname}{block:NoteCount}&bull;{/block:NoteCount} <a href="{Permalink}#disqus_thread">{lang:View comments}</a>{/block:IfDisqusShortname}</div>
+                        </div>
+                    </a>
+                </div>
+                {/block:Date}
+                {block:PostNotes}<div class="notecontainer">{PostNotes}</div>{/block:PostNotes}
+                {block:HasTags}
+                <div class="tags">                
+                Tags: 
+                    {block:Tags}
+                        <a href="{TagURL}">#{Tag}</a> 
+                    {/block:Tags}
+                </div>
+                {/block:HasTags}
+                <div class="fbpush">
+                    <div class="fb-like" data-href="{Permalink}" data-send="false" data-width="350" data-show-faces="true" data-font="lucida grande"></div>
+                    {block:PostSummary}
+                    <div class="fb-comments" data-href="{Permalink}" data-num-posts="2" data-width="350"></div>
+                    {/block:PostSummary}
+                </div>
+            </footer>
+        </article>
+        {/block:Posts}
+    </div>
+    <aside id="sidebar">
+        <section class="widget">
+            <h4 class="widgettitle">目錄</h4>
+            <ul>
+            </ul>
+        </section>
+        <section class="widget">
+            <div class="avatar"><a href="/"><img src="{PortraitURL-128}" /></a></div>
+            <div class="description">{Description}</div>
+            <div class="ask_and_submit clearfix">
+                {block:AskEnabled}<a href="/ask" class="item">{AskLabel}</a>{/block:AskEnabled}
+                {block:SubmissionsEnabled}<a href="/submit" class="item">{SubmitLabel}</a>{/block:SubmissionsEnabled}
+                <a href="{RSS}" class="item">{lang:RSS}</a>
+            </div>
+            <a href="http://www.tumblr.com/follow/{Name}" id="followontumblr"><div class="heading">{lang:Follow on Tumblr}</div></a>
+        </section>
+    </aside>
+    <footer id="footer">
+        
+    </foooter>
+</div>
+<div id="fb-root"></div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-40539151-1', 'evernoteapi.com');
+  ga('send', 'pageview');
+</script>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1&appId=556674154382711";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <script>
+        SyntaxHighlighter.all();
+    </script>
+</body>
+</html>
