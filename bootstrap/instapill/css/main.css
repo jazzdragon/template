@@ -8,8 +8,11 @@ body, html {
     /* Negative indent footer by it's height */
     margin: 0 auto -30px;
 }
+.container{
+    padding: 0 10px;
+}
 #wrap > .container{
-    padding: 60px 0 0 0;
+    padding: 60px 10px 0;
 }
 #push, footer, footer ul li{
     height: 30px;
@@ -35,6 +38,11 @@ body, input, button, select, textarea {
     font-family: 'Open Sans', sans-serif;
     line-height: inherit;
 }
+
+.container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container{
+    width: auto;
+}
+
 /* Large desktop */
 @media (min-width: 1200px) {
     .container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container{
@@ -56,13 +64,6 @@ body, input, button, select, textarea {
     .container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container{
         width: auto;
     }
-    #wrap .navbar .container{
-        padding: 0;
-    }
-    #wrap .container{
-        padding-left: 10px;
-        padding-right: 10px;
-    }
 }
  
 /* Landscape phone to portrait tablet */
@@ -76,10 +77,6 @@ body, input, button, select, textarea {
     
     #wrap .navbar .container{
         padding: 0 20px;
-    }
-    #wrap .container{
-        padding-left: 10px;
-        padding-right: 10px;
     }
 }
  

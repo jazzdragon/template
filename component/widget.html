@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>HTML 5 Template</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="style.css">
+<style>
+.module{
+    width: 400px;
+}
+.module .hd{
+    border: 1px solid #888;
+    border-radius: 5px 5px 0 0;
+    padding: 10px;
+}
+.module .bd{
+    border-left: 1px solid #888;
+    border-right: 1px solid #888;
+    padding: 10px;
+}
+.module .ft{
+    border: 1px solid #888;
+    border-radius: 0 0 5px 5px;
+    padding: 10px;
+    position: relative;
+    box-shadow: 0 1px 1px #b9b9b9;
+    
+}
+.module .ft:before{
+    border: 1px solid #888;
+    border-radius: 0 0 5px 5px;
+    content: "";
+    position: absolute;
+    left: 3px;
+    right: 3px;
+    bottom: -4px;
+    height: 2px;
+    box-shadow: 0 1px 1px #b9b9b9;
+    
+}
+.module .ft:after{
+    border: 1px solid #888;
+    border-radius: 0 0 5px 5px;
+    content: "";
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    bottom: -7px;
+    height: 2px;
+    box-shadow: 0 1px 1px #b9b9b9;
+    
+}
+
+</style>
+</head>
+<body>
+
+<div class="module">
+    <div class="hd">header</div>
+    <div class="bd">body</div>
+    <div class="ft">footer</div>
+</div>
+
+<!-- https://developers.google.com/speed/libraries/devguide#jquery -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>HTML 5 Template</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="style.css">
+<style>
+.module{
+    width: 300px;
+    height: 300px;
+    border: 1px solid #888;
+    position: relative;
+}
+.popular{
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    width: 75px;
+    height: 75px;
+    overflow: hidden;
+}
+.popular span{
+    line-height: 20px;
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+    -webkit-transform: rotate(45deg);
+    display: block;
+    width: 100px;
+    background: linear-gradient(#9BC90D 0%, #79A70A 100%);
+    box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 19px;
+    right: -21px;
+}
+.popular span:before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 100%;
+    border-left: 3px solid #579500;
+    border-right: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    border-top: 3px solid #579500;
+}
+.popular span:after{
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 100%;
+    border-right: 3px solid #579500;
+    border-left: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    border-top: 3px solid #579500;
+}
+
+
+</style>
+</head>
+<body>
+
+<div class="module">
+    <div class="hd">header</div>
+    <div class="bd">body</div>
+    <div class="ft">footer</div>
+    <div class="popular"><span>Popular</span></div>
+</div>
+
+<!-- https://developers.google.com/speed/libraries/devguide#jquery -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+});
+</script>
+
+</body>
+</html>
